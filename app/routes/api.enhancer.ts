@@ -2,7 +2,6 @@ import { type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { StreamingTextResponse, parseStreamPart } from 'ai';
 import { streamText } from '~/lib/.server/llm/stream-text';
 import { stripIndents } from '~/utils/stripIndent';
-import { apiKey } from '~/config/apiKey'; // Импортируем API-ключ
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
@@ -30,7 +29,7 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
         `,
         },
       ],
-      apiKey, // Передаём API-ключ напрямую
+      context.cloudflare.env,
     );
 
     const transformStream = new TransformStream({
