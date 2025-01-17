@@ -20,6 +20,10 @@ RUN mkdir -p /app/app && \
         } \
     ]' > /app/app/llms.json
 
+# Создаем файл с ключом API
+RUN mkdir -p /app/config && \
+    echo "module.exports = { apiKey: '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' };" > /app/config/apiKey.js
+
 # Устанавливаем зависимости и собираем проект
 RUN pnpm install
 RUN pnpm build
