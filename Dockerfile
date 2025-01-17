@@ -20,10 +20,10 @@ RUN mkdir -p /app/app && \
         } \
     ]' > /app/app/llms.json
 
-# Создаем файл для локального окружения с ключом API
-RUN echo "ANTHROPIC_API_KEY=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" > .env.local
+# Создаем файл для локального окружения
+RUN echo "ANTHROPIC_API_KEY=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\nVITE_LOG_LEVEL=debug" > .env.local
 
-# Создаем файл для ключа API в JavaScript
+# Создаем файл для ключа API
 RUN mkdir -p /app/config && \
     echo "module.exports = { apiKey: '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' };" > /app/config/apiKey.js
 
