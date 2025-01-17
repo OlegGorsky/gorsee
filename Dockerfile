@@ -29,7 +29,7 @@ RUN pnpm install
 RUN pnpm build
 
 # Указываем порт для приложения
-EXPOSE 8788
+EXPOSE 8789
 
 # Команда для запуска приложения с передачей ключа API
 CMD ["wrangler", "pages", "dev", "./build/client", "--port", "8789", "--ip", "0.0.0.0", "--binding", "ANTHROPIC_API_KEY=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"]
