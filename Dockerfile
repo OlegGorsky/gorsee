@@ -21,18 +21,18 @@ RUN mkdir -p /app/app && \
     ]' > /app/app/llms.json
 
 # Создаём файл для локального окружения
-RUN echo "ANTHROPIC_API_KEY=sk-your-valid-api-key\nVITE_LOG_LEVEL=debug" > /app/.env.local
+RUN echo "ANTHROPIC_API_KEY=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\nVITE_LOG_LEVEL=debug" > /app/.env.local
 
 # Создаём файл для ключа API
 RUN mkdir -p /app/config && \
-    echo "module.exports = { apiKey: 'sk-your-valid-api-key' };" > /app/config/apiKey.js
+    echo "module.exports = { apiKey: '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' };" > /app/config/apiKey.js
 
 # Устанавливаем зависимости и собираем проект
 RUN pnpm install
 RUN pnpm build
 
 # Указываем порт для приложения
-EXPOSE 8788
+EXPOSE 8789
 
 # Команда для запуска приложения
-CMD ["wrangler", "pages", "dev", "./build/client", "--port", "8788", "--ip", "0.0.0.0"]
+CMD ["wrangler", "pages", "dev", "./build/client", "--port", "8789", "--ip", "0.0.0.0"]
